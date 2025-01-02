@@ -1,2 +1,2 @@
-https://github.com/dandavison/delta?tab=readme-ov-file
-https://github.com/Aider-AI/aider
+- [Delta for Git](https://github.com/dandavison/delta?tab=readme-ov-file)
+- [Aider-AI](https://github.com/Aider-AI/aider)
