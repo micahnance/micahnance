@@ -26,3 +26,30 @@ endif
 call plug#begin()
 Plug 'easymotion/vim-easymotion'
 call plug#end()
+
+function! MoveLineToDateSection()
+  " Get today's date
+  let l:date = strftime("%Y-%m-%d")
+
+  " Yank the current line
+  normal! yy
+
+  " Delete the current line
+  normal! dd
+
+  " Search for today's date
+  let l:found = search('^' . l:date . '$', 'w')
+
+  if l:found
+    " Move to the end of the date section
+    execute "normal! /\\v^(?!\\d{4}-\\d{2}-\\d{2})\\S\\zs\\n"
+    normal! "0p
+  else
+    " Go to end of file and add date and line
+    normal! Go
+    execute "normal! o" . l:date
+    normal! "0p
+  endif
+endfunction
+
+command! TaskDone call MoveLineToDateSection()
